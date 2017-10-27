@@ -1,4 +1,5 @@
 class CatsController < ApplicationController
+
   def index
     @cats = Cat.all
     render :index
@@ -11,11 +12,12 @@ class CatsController < ApplicationController
 
   def new
     @cat = Cat.new
+    @cat.user_id = current_user.id
     render :new
   end
 
   def create
-    @cat = Cat.new(cat_params)
+    @cat = current_user.cats.new(cat_params)
     if @cat.save
       redirect_to cat_url(@cat)
     else

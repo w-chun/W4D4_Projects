@@ -1,5 +1,7 @@
 <h1>Cats upon cats!</h1>
 
+  <input type="hidden" name="authenticity_token" value=" <%= form_authenticity_token %> ">
+  
 <ul>
   <% @cats.each do |cat| %>
     <li><a href="<%= cat_url(cat) %>"><%= cat.name %></a></li>
